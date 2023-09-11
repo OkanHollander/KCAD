@@ -1,5 +1,6 @@
 # KCAD
 
+[![pipeline status](https://gitlab.com/okan.hollander/kcad/badges/main/pipeline.svg)](https://gitlab.com/okan.hollander/kcad/-/commits/main) 
 
 
 ## Getting started
