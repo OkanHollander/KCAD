@@ -14,7 +14,6 @@ build-job:       # This job runs in the build stage, which runs first.
   stage: build
   script:
     - echo "Compiling the code..."
-    - ls -lsa
 
 unit-test-job:   # This job runs in the test stage.
   stage: test    # It only starts when the job in the build stage completes successfully.
@@ -31,8 +30,7 @@ lint-test-job:   # This job also runs in the test stage.
       chmod +x kube-score_1.17.0_linux_amd64
       mv kube-score_1.17.0_linux_amd64 kubescore
     - "echo Run Kubescore"
-    - "ls -lsa"
-    - "./kubescore score ./manifests/*.yaml --ignore-test container-security-context-user-group-id"
+    - "./kubescore score manifests/linting/*.yaml --ignore-test container-security-context-user-group-id"
 
 
 deploy-job:      # This job runs in the deploy stage.
