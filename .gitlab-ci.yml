@@ -31,7 +31,8 @@ lint-test-job:   # This job also runs in the test stage.
       chmod +x kube-score_1.17.0_linux_amd64
       mv kube-score_1.17.0_linux_amd64 kubescore
     - "echo Run Kubescore"
-    - "./kubescore score manifests/*.yaml --ignore-test container-security-context-user-group-id "
+    - "ls -lsa"
+    - "./kubescore score ./manifests/*.yaml --ignore-test container-security-context-user-group-id"
 
 
 deploy-job:      # This job runs in the deploy stage.
