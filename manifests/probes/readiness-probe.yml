@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "startup-pod"
+  namespace: probes
+spec:
+  containers:
+    - name: pwsh
+      image: "mcr.microsoft.com/powershell"
+      command:
+        - pwsh
+        - -Command
+        - while ($true) { Write-Host 'Doing work ...'; Start-sleep -Seconds 3 }
+      resources:
+        limits:
+          cpu: 600m
+          memory: 500Mi
+        requests:
+          cpu: 100m
+          memory: 200Mi
+      readinessProbe:
+        exec:
+          command:
+            - pwsh
+            - -Command
+            - if (Test-Path -Path offline.txt) { exit 99 }
+        timeoutSeconds: 10
+  restartPolicy: Always
