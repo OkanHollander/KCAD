@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "configmap-demo-pod"
+  namespace: configmaps
+  labels:
+    app: "configmap-demo-pod"
+spec:
+  containers:
+  - name: configmap-demo-pod
+    image: "alpine"
+    resources:
+      limits:
+        cpu: 200m
+        memory: 500Mi
+      requests:
+        cpu: 100m
+        memory: 200Mi
+    env:
+    - name: employee01
+      valueFrom:
+        configMapKeyRef:
+          name: cbtnuggets
+          key: employee01
+    - name: employee02
+      valueFrom:
+        configMapKeyRef:
+          name: cbtnuggets
+          key: employee02
+    - name: employee03
+      valueFrom:
+        configMapKeyRef:
+          name: cbtnuggets
+          key: employee03
+  restartPolicy: Always

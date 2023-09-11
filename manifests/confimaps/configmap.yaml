@@ -1,0 +1,9 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cbtnuggets
+  namespace: configmaps
+data:
+  employee01: Okan
+  employee02: Liam
+  employee03: Lynn
