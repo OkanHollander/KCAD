@@ -9,6 +9,7 @@ services:
 
 before_script:
   - apt-get update
+  - apt install -y wget
 
 build-job:       # This job runs in the build stage, which runs first.
   stage: build
