@@ -7,6 +7,12 @@ spec:
   initContainers:
     - name: myapp2
       image:  ubuntu:latest
+      command: ["printenv"]
+      args: ["HOSTNAME"]
+    - name: myapp3
+      image: ubuntu:latest
+      command: ["printenv"]
+      args: ["KUBERNETES_PORT"]
   containers:
   - name: myapp
     image: "nginx"
