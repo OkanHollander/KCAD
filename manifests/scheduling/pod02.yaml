@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "webserver02"
+  namespace: default
+  labels:
+    app: "webserver02"
+spec:
+  priorityClassName: medium-priority
+  containers:
+  - name: webserver02
+    image: "nginx"
+    resources:
+      limits:
+        cpu: 200m
+        memory: 500Mi
+      requests:
+        cpu: 100m
+        memory: 200Mi
+    ports:
+    - containerPort:  80
+  restartPolicy: Always
