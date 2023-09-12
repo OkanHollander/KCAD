@@ -3,5 +3,5 @@ kind: PriorityClass
 metadata:
   name: high-priority
 value: 1000
-globalDefault: true
+globalDefault: false
 description: "This is a high priority class. Only use it if you really need to."
