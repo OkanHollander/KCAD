@@ -16,4 +16,10 @@ spec:
       requests:
         cpu: 100m
         memory: 200Mi
+    volumeMounts:
+      - name:  sharedlogs
+        mountPath:  /app/logs
+  volumes:
+    - name:  sharedlogs
+      emptyDir: {}
   restartPolicy: Always
