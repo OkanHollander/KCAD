@@ -1,11 +1,17 @@
-FROM mcr.microsoft.com/powershell
+# Use the official Python image as the base image
+FROM python:3.8-slim
 
+# Set the working directory in the container
 WORKDIR /app
 
-SHELL ["pwsh", "-Command"]
+# Copy the current directory's contents into the container at /app
+COPY . /app
 
-RUN Install-Module -Name Pode -Force
+# Install Flask
+RUN pip install Flask
 
-ADD ["webapp.ps1", "/app/"]
+# Expose port 80 for the web server to listen on
+EXPOSE 80
 
-CMD ["pwsh", "-File", "webapp.ps1"]
+# Define the command to run the web server when the container starts
+CMD ["python", "webapp.py"]
