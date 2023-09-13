@@ -4,6 +4,7 @@ metadata:
   name:  okanwebappv2
   namespace: rollingout
 spec:
+  replicas: 3
   selector:
     matchLabels:
       appname: okanwebapp
