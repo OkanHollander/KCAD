@@ -19,6 +19,18 @@ spec:
     volumeMounts:
       - name:  sharedlogs
         mountPath:  /app/logs
+  - name: my-read-logger
+    image: "0kanh0llander/consumer-logger:v1"
+    resources:
+      limits:
+        cpu: 200m
+        memory: 500Mi
+      requests:
+        cpu: 100m
+        memory: 200Mi
+    volumeMounts:
+      - name:  sharedlogs
+        mountPath:  /var/log/myapp
   volumes:
     - name:  sharedlogs
       emptyDir: {}
