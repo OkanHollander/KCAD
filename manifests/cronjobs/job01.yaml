@@ -5,6 +5,8 @@ metadata:
   namespace: default
 spec:
   schedule: "*/1 * * * *"
+  successfulJobsHistoryLimit: 10
+  failedJobsHistoryLimit: 20
   jobTemplate:
     spec:
       template:
