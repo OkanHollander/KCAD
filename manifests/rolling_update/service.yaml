@@ -5,7 +5,8 @@ metadata:
   namespace: rollingout
 spec:
   selector:
-    appversion: v1
+    # appversion: v1
+    appname: okanwebapp
   type: ClusterIP
   ports:
   - protocol: TCP
