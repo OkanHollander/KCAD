@@ -6,6 +6,7 @@ metadata:
   labels:
     app: myapp
 spec:
+  completions: 5
   template:
     metadata:
       name: myapp
@@ -15,4 +16,7 @@ spec:
       containers:
         - name: myapp
           image: python:3.7.6-alpine3.10
+          command:
+            - python
+            - print("lol")
       restartPolicy: OnFailure
