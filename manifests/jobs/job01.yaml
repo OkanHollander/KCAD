@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: myjob
+  namespace: jobs
+  labels:
+    app: myapp
+spec:
+  template:
+    metadata:
+      name: myapp
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: myapp
+          image: python:3.7.6-alpine3.10
+      restartPolicy: OnFailure
