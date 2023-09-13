@@ -2,7 +2,7 @@ import time
 import glob
 import re
 
-LOG_PATH = '/app/logs/*.log'
+LOG_PATH = '/var/logs/*.log'
 
 def tail_files(file_paths, num_entries=5):
     try:
