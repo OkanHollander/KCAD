@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  okanwebappv2
+  namespace: rollingout
+spec:
+  selector:
+    matchLabels:
+      appname: okanwebapp
+  template:
+    metadata:
+      labels:
+        appname: okanwebapp
+        appversion: v2
+    spec:
+      containers:
+      - name:  okanwebapp
+        image:  0kanh0llander/rollingupdatewebapp:v2
+        resources:
+          requests:
+            cpu: 300m
+            memory: 150Mi
+          limits:
+            cpu: 300m
+            memory: 150Mi
+        livenessProbe:
+          tcpSocket:
+            port: 80
+          initialDelaySeconds: 5
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 3
+          periodSeconds: 10
+        ports:
+        - containerPort:  80
+      restartPolicy: Always
