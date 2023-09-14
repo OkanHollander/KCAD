@@ -1,0 +1,17 @@
+kubectl create namespace database
+kubectl create namespace myapi
+kubectl create namespace myfrontend
+
+kubectl label namespace/myapi type=myapi
+
+
+kubectl run --image=mysql:latest --port=3306 --env=MYSQL_ROOT_PASSWORD=mysql123 mysql01 --namespace=database
+kubectl label pod/mysql01 type=database --namespace=database
+
+kubectl create service clusterip mysqldb --tcp=3306:3306 --namespace=database
+kubectl set selector service/mysqldb type=database --namespace=database
+
+kubectl run --image=mysql:latest --stdin --tty mysqlclient01 --namespace=myapi -- bash
+        ***** mysql --user=root --password=mysql123 --host=mysqldb.database *****
+
+kubectl run --image=mysql:latest --stdin --tty frontend01 --namespace=myfrontend -- bash
