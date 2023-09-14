@@ -1,0 +1,5 @@
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+
+helm install --namespace prometheus --generate-name prometheus-community/prometheus
+
+kubectl -n prometheus port-forward services/prometheus-1694685336-server 35678:80  
