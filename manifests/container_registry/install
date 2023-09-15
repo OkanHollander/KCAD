@@ -1,0 +1,5 @@
+helm install --namespace harbor myharbor harbor/harbor \
+    --set expose.type=clusterIP \
+    --set expose.tls.auto.commonName=okanhollander.com \
+    --set notary.enabled=false \
+    --set harborAdminPassword=Welkom1234 
